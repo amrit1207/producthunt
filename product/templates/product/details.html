@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% load staticfiles %}
+<div class="container">
+<div class="row">
+<div class="col-4 pt-2">
+    <img src="{{ productdetail.icon.url }}" class="img-fluid" align="center"/>
+</div>
+
+<div class="col-8 pt-2">
+    <a href="{{ productdetail.url }}"><h1> {{ productdetail.title }}</h1></a>
+</div>
+</div>
+
+<div class="row">
+<div class="col-8 pt-2">
+    <img src="{{ productdetail.image.url}}" class="img-fluid" align="center"></div>
+    <div class="col-4 pt-2">
+    <a href="Javascript:document.getElementById('upvote').submit()"><button class="btn btn-primary btn-block btn-lg"><img src="{%static 'vote2.png'  %}" height="40" width="40"/> Upvote {{ productdetail.votes }}</button></a>
+</div>
+</div>
+
+<div class="row">
+<div class="col-4 pt-2">
+    <h4 style="color:lightseagreen;"><img src="{% static 'user.jpg' %}" height="30" width="30"/> Hunter By : {{ productdetail.hunter.username }}</h4>
+</div>
+
+    <div class="col-4 pt-2 text-right">
+    <h4 style="color:lightseagreen;"><img src="{% static 'clock.png' %}" width="30" height="30"/> {{ productdetail.pub_date }}</h4>
+
+</div>
+</div>
+
+<div class="row">
+<div class="col-8 2">
+    <p align="center">{{ productdetail.body }}</p>
+</div>
+</div>
+</div>
+
+<form id="upvote" method="POST" action="{% url 'upvote' productdetail.id %}">
+{% csrf_token %}
+<input type="hidden">
+</form>
+
+
+{% endblock %}

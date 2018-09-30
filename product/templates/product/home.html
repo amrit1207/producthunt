@@ -1,5 +1,22 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <p align="center"> hello</p>
+    {% load staticfiles %}
+{% for i in producthome.all %}
+<div class="container">
+    <div class="row pt-3">
+        <div class="col-3" onclick="window.location='{% url 'detail' i.id %}';" style="cursor:pointer; "><img src="{{ i.icon.url }}" class="img-fluid"/></div>
+        <div class="col-6"onclick="window.location='{% url 'detail' i.id %}';" style="cursor:pointer; " ><h5>{{ i.title }}</h5>
+        <p>{{ i.summary }}</p></div>
+        <div class="col-3"><a href="Javascript:document.getElementById('upvote{{ i.id }}').submit()"><button class="btn btn-primary btn-block btn-lg"><img src="{%static 'vote2.png'  %}" height="40" width="40"/> Upvote {{ i.votes }}</button></a> </div>
+    </div>
+</div>
+
+<form id="upvote{{ i.id }}" method="POST" action="{% url 'upvote' i.id %}">
+{% csrf_token %}
+<input type="hidden">
+</form>
+
+
+{% endfor %}
 {% endblock %}

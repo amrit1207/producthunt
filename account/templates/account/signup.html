@@ -6,19 +6,49 @@
 <br/>
 <br/>
 {% endif %}
-<div class="container">
-<h1>Sign Up!!!</h1>
-<form method="POST" action="{% url 'signup' %}">
-{% csrf_token %}
-<b>Username:</b>
-<br/>
-<input type="text"  name="username" align=><br/>
-<b>Password:</b>
-<br/>
-<input type="password"  name="password1"  ><br/>
-<b>Confirm Password:</b>
-<br/>
-    <input type="password"  name="password2" ><br/><br/><br/>
-<input class="btn btn-primary" type="submit" value="Sign Up!">
-        </form></div>
+
+
+<html lang="en">
+  <head>
+      {% load staticfiles %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>Signin Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="signin.css" rel="stylesheet">
+  </head>
+
+  <body class="text-center pd-3">
+    <form class="form-signin" method="POST" action="{% url 'signup' %}">
+        {% csrf_token %}
+      <img class="mb-4" src="{% static 'image1.png' %}" alt="" width="72" height="72">
+      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        <b>Username:</b>
+        <br/>
+        <input type="text"  name="username" align=><br/>
+        <b>Password:</b>
+        <br/>
+        <input type="password"  name="password1"  ><br/>
+        <b>Confirm Password:</b><br/>
+        <input type="password"  name="password2"  ><br/>
+        <br/>
+        <label>
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+        <br/>
+
+      <button class="btn  btn-primary " type="submit">Sign in</button>
+
+    </form>
+  </body>
+</html>
+
 {% endblock %}

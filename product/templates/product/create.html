@@ -1,1 +1,56 @@
-create
+{% extends 'base.html' %}
+
+{% block content %}
+{% if error %}
+{{ error }}
+<br/>
+<br/>
+{% endif %}
+
+<html lang="en">
+  <head>
+      {% load staticfiles %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>Signin Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="signin.css" rel="stylesheet">
+  </head>
+<div class="container">
+  <body class="text-center pd-3">
+    <form class="form-signin" method="POST" action="{% url 'create' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+      <img class="mb-4" src="{% static 'image1.png' %}" alt="" width="72" height="72">
+      <h1 class="h3 mb-3 font-weight-normal">Create your Product Details</h1>
+        <b>Title:</b>
+        <input type="text"  name="title" ><br/><br/>
+        <b>Body:</b>
+        <input type="textfield"  name="body"  ><br/><br/>
+        <b>URL:</b>
+        <input type="textfield"  name="url"  ><br/><br/>
+                <b>Image:</b><br/>
+                <input type="file"  name="image"  ><br/><br/>
+        <b>Icon:</b><br/>
+                <input type="file"  name="icon"  ><br/><br/>
+        <br/>
+        <br/>
+        <button class="btn  btn-primary " type="submit">Create</button>
+
+    </form>
+  </body>
+</div>
+</html>
+
+
+
+
+
+{% endblock %}

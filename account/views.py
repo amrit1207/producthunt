@@ -14,10 +14,8 @@ def signup(request):
                 return redirect('home')  # user successfully login
         else:
             return render(request, 'account/signup.html', {'error': 'Password doesnot match'})
-
     else:
-        # user has already account
-     return render(request,'account/signup.html',)
+        return render(request,'account/signup.html',) #user has already account
 
 def login(request):
     if request.method == 'POST':
